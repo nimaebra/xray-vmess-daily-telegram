@@ -566,3 +566,14 @@ GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o xray-telegram
 ```
 
 
+# Base64 String
+```
+vmess://eyJhZGQiOiI0NS4xNTYuMjQuMjI0IiwiYWlkIjoiMCIsImhvc3QiOiJtYXNoaGFkMS5pcmFuY2VsbC5pciIsImlkIjoiNTEwN2RhNzAtYjgyNy00NGQzLTlhYWEtNjM5MGJhYmIyYjA2IiwibmV0IjoidGNwIiwicGF0aCI6Ii8iLCJwb3J0IjoiODA4MCIsInBzIjoic2FyaW5hIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJodHRwIiwidiI6IjIifQ==
+```
+
+base64 decode :
+```
+
+{"add":"45.156.24.224","aid":"0","host":"mashhad1.irancell.ir","id":"5107da70-b827-44d3-9aaa-6390babb2b06","net":"tcp","path":"/","port":"443","ps":"sarina","scy":"auto","sni":"","tls":"","type":"http","v":"2"}
+
+```
