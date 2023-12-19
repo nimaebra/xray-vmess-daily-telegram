@@ -1,5 +1,5 @@
-# Xray Reality Daily Telegram
-Xray Reality with send configuration in the telegram channel every day.This project send Xray Reality configuration to your channel base on schedule.<br />
+# Xray Vmess Daily Telegram
+Xray Vmess with send configuration in the telegram channel every day.This project send Xray Vmess configuration to your channel base on schedule.<br />
 
 # Supported Version
 Ubuntu 22.04
@@ -30,7 +30,7 @@ cd /root/xray-configuration
 * <b>please run these command one by one. </b>
 
 ```
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/install.sh
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/install.sh
 sudo chmod +x /root/xray-configuration/install.sh
 bash /root/xray-configuration/install.sh
 ```
@@ -145,7 +145,7 @@ Another Method for modify setting.json
 cd /root
 mkdir /root/xray-configuration
 cd /root/xray-configuration
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/setting.json
 nano /root/xray-configuration/setting.json
 ```
 [ آموزش کار کردن با نانو](https://www.youtube.com/watch?v=Aj2pmC0u2ow)<br />
@@ -153,7 +153,7 @@ nano /root/xray-configuration/setting.json
 
 
 ```
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/setting.json
 ```
 
 Instead of creating the setting.json file, you can also use the following command to create the file and fill it with the default values. <br />
@@ -213,7 +213,7 @@ You can also edit your file with nano editor. <br />
 
 ```
 rm -rf /root/xray-configuration/setting*
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/setting.json
 nano setting.json
 ```
 And then modify your json file. <br />
@@ -303,7 +303,7 @@ echo "{
 
 After install that explain in upper section. you can change scheduler time in the cronjob.
 ```
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/install.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/install.json
 
 ```
 
@@ -446,7 +446,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 
 rm -rf /root/xray-configuration/install.sh*
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/install.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/install.json
 
 sudo chmod +x /root/xray-configuration/install.sh
 
@@ -529,7 +529,7 @@ systemctl disable xray
 
 # Remove files
 rm /etc/systemd/system/xray.service
-rm /root/xray-configuration/reality.json
+rm /root/xray-configuration/vmess.json
 rm /root/xray-configuration/xray
 rm /root/xray-configuration/subscribe.*
 rm -rf /var/www/hml/subscribe.*
@@ -562,16 +562,6 @@ journalctl --vacuum-size=50M
 ```
 
 
-
-# Find Best SNI for the xray
-
-You can find the best SNI with the following github repository:
-
-[TLS Checker](https://github.com/ImanMontajabi/TLS-Checker) <br />
-[ List of servers to test speedtest-cli ](https://gist.github.com/ofou/654efe67e173a6bff5c64ba26c09d058) <br />
-[scan reality address in Persian ](https://www.youtube.com/watch?v=ljYG6KSGw88&t=277s) <br />
-[Reality - TLS - Scanner](https://github.com/XTLS/RealiTLScanner) <br />
- 
 
 
 ##  << Other options ( professional edit project) >>

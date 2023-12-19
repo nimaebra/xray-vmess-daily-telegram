@@ -1,9 +1,5 @@
 {
-    "ports": [443,  2087 ],
-    "domains": [
-         "ftp.debian.org",
-         "discord.com"
-    ],
+    "ports": 443,
     "bot_token" : "627442321431:bga9g_13IQBuAcDb3DSemBceracA-KDFS3b",
     "chat_id" : "-1003385273232",
     "donate_url" : "",
@@ -12,6 +8,5 @@
     "send_vnstat" : true,
     "aggregate_subscriptions" : [],
     "send_configuration" : "all",
-    "send_subscriptions" : true, 
-    "grpc" : [true, false]
+    "send_subscriptions" : true 
  }
