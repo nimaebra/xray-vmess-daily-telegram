@@ -5,71 +5,47 @@
     "inbounds": [
         {
             "listen": "0.0.0.0",
-            "port": 8443,
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "4d327bac-f5f4-4b1e-8828-42ae50615ad7",
-                        "flow": ""
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "grpc",
-                "security": "reality",
-                "realitySettings": {
-                    "show": false,
-                    "dest": "datadoghq.com:443",
-                    "xver": 0,
-                    "serverNames": [
-                        "datadoghq.com"
-                    ],
-                    "privateKey": "4Fr8ACuiI2ffhrYEvXZ8WFmAo5oBQz6BA9xHsrxhGnc",
-                    "minClientVer": "",
-                    "maxClientVer": "",
-                    "maxTimeDiff": 0,
-                    "shortIds": [
-                        "0123456789abcdef"
-                    ],
-                    "spiderX": "/doggo"
-                }
-            }
-        },
-        {
-            "listen": "0.0.0.0",
             "port": 443,
-            "protocol": "vless",
+            "protocol": "vmess",
             "settings": {
                 "clients": [
                     {
-                        "id": "4d327bac-f5f4-4b1e-8828-42ae50615ad7",
-                        "flow": ""
+                        "id": "5107da70-b827-44d3-9aaa-6390babb2b06",
+                        "security" : "auto"
                     }
-                ],
-                "decryption": "none"
+                ]
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "reality",
-                "realitySettings": {
-                    "show": false,
-                    "dest": "datadoghq.com:443",
-                    "xver": 0,
-                    "serverNames": [
-                        "datadoghq.com"
-                    ],
-                    "privateKey": "4Fr8ACuiI2ffhrYEvXZ8WFmAo5oBQz6BA9xHsrxhGnc",
-                    "minClientVer": "",
-                    "maxClientVer": "",
-                    "maxTimeDiff": 0,
-                    "shortIds": [
-                        "0123456789abcdef"
-                    ],
-                    "spiderX": "/doggo"
-                }
+                "tcpSettings": {
+                    "header": {
+                        "type": "http",
+                        "response": {
+                            "version": "1.1",
+                            "status": "200",
+                            "reason": "OK",
+                            "headers": {
+                                "Host": "http://mashhad1.irancell.ir",
+                                "Connection": [
+                                    "Keep-Alive"
+                                ],
+                                "Content-Type" : "text/html"
+                            }
+                        }
+                    }
+                },
+                "security": "none"
             }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
         }
     ],
     "routing": {
@@ -85,19 +61,11 @@
             },
             {
                 "type": "field",
-                "domain":[
+                "domain": [
                     "geosite:category-porn"
                 ],
                 "outboundTag": "block"
             }
         ]
-        
-    },
-    "outbounds":[
-        {
-            "tag":"direct","protocol":"freedom"
-        }
-    ]
-
-
+    }
 }
