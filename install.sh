@@ -4,17 +4,17 @@
 install_dir=/root/xray-configuration
 cd $install_dir
 
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/config.json
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/reinstall.sh
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/setting.json
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-reality-daily-telegram/main/make_subscribe.sh
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/config.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/reinstall.sh
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/setting.json
+wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/make_subscribe.sh
 
 #add permitions
 sudo chmod +x $install_dir/reinstall.sh
 sudo chmod +x $install_dir/make_subscribe.sh
 
 rm -rf $install_dir/xray-telegram*
-wget https://github.com/majidrezarahnavard/xray-reality-daily-telegram/releases/download/v.1.1.0/xray-telegram
+wget https://github.com/majidrezarahnavard/xray-vmess-daily-telegram/releases/download/v.1.1.0/xray-telegram
 sudo chmod +x ./xray-telegram
 
 #instal monitoring
