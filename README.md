@@ -41,11 +41,7 @@ if you need modify the setting.json file
 ```
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443,2087],
-    \"domains\": [
-        \"ftp.debian.org\",
-        \"discord.com\"
-    ],
+    \"ports\": 443,
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
     \"donate_url\" : \"\",
@@ -54,9 +50,7 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"grpc\" : [true, false]
-
+    \"send_subscriptions\" : true
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -98,8 +92,7 @@ Setting file is located in /root/xray-configuration/settings.json and you can ea
 
 Edit this setting file base on your needs.<br />
 
-```ports``` are the ports that you want to use in your server. <br />
-```domains``` are the domains that you want to use in your SNI. <br />
+```port``` are the port that you want to use in your server. <br />
 ```bot_token``` is the bot token that you get from the bot father. <br />
 ```chat_id``` is the chat id that you get from the channel. <br />
 ```donate_url``` is the url that you want to send your configuration. <br />
@@ -110,7 +103,6 @@ Edit this setting file base on your needs.<br />
 
 ```send_configuration``` is send configuration to the channel. you can choose ```all``` or ```first``` or ```none``` <br />
 ```send_subscriptions``` is send subscription to the channel. you can choose ```true``` or ```false```  <br />
-```grpc``` is boolean variable, if the value is ```true``` system set GRPC configuration.
 
 ```
 cd /root
@@ -118,11 +110,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443,2087],
-    \"domains\": [
-       \"ftp.debian.org\",
-        \"discord.com\"
-    ],
+    \"ports\": 443,
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
     \"donate_url\" : \"https://where_ever_you_want.site\",
@@ -131,9 +119,7 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"grpc\" : [true, false]
-
+    \"send_subscriptions\" : true
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -185,11 +171,7 @@ For check your json file you can use below command line. <br />
 You have to see below result. <br />
 ```
 {
-   "ports": [443, 22 ],
-   "domains": [
-       "www.datadoghq.com",
-       "000webhost.ir"
-   ],
+   "ports": 443,
    "bot_token" : "627444321931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b",
    "chat_id" : "-1003342276432",
    "donate_url" : "",
@@ -198,8 +180,7 @@ You have to see below result. <br />
    "send_vnstat" : true,
    "aggregate_subscriptions" : [],
    "send_configuration" : "first",
-   "send_subscriptions" : true,
-   "grpc" : [true, false]
+   "send_subscriptions" : true
 }
 
 ```
@@ -235,11 +216,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [8585, 2054],
-    \"domains\": [
-        \"aws.amazon.com\",
-        \"eset.com\",
-    ],
+    \"ports\": 8585,
     \"bot_token\" : \"\",
     \"chat_id\" : \"\",
     \"donate_url\" : \"\",
@@ -248,9 +225,7 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"none\",
-    \"send_subscriptions\" : false,
-    \"grpc\" : [true, false]
-
+    \"send_subscriptions\" : false
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -283,11 +258,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 2095   ],
-    \"domains\": [
-        \"ftp.debian.org\",
-        \"discord.com\"
-    ],
+    \"ports\": 443,
     \"bot_token\" : \"\",
     \"chat_id\" : \"\",
     \"donate_url\" : \"yebekhe\",
@@ -296,8 +267,7 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"grpc\" : [true, false]
+    \"send_subscriptions\" : true
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -328,11 +298,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 22 ],
-    \"domains\": [
-        \"ftp.debian.org\",
-        \"discord.com\"
-    ],
+    \"ports\": 443,
     \"bot_token\" : \"627344321931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342176532\",
     \"donate_url\" : \"yebekhe\",
@@ -341,9 +307,7 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"grpc\" : [true, false]
-
+    \"send_subscriptions\" : true
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -360,11 +324,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 22],
-    \"domains\": [
-        \"ftp.debian.org\",
-        \"discord.com\"
-    ],
+    \"ports\": 443,
     \"bot_token\" : \"627444321231:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342276432\",
     \"donate_url\" : \"stop\",
@@ -373,9 +333,7 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"grpc\" : [true, false]
-
+    \"send_subscriptions\" : true
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -405,11 +363,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": [443, 22],
-    \"domains\": [
-        \"cdn.discordapp.com\",
-        \"www.theverge.com\"
-    ],
+    \"ports\": 443,
     \"bot_token\" : \"627444321231:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342276432\",
     \"donate_url\" : \"\",
@@ -418,9 +372,7 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [ \"http://1.22.33.444/subscribe.txt\" , \"http://2.22.33.444/subscribe.txt\" , \"http://3.22.33.444/subscribe.txt\"],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"grpc\" : [true, false]
-
+    \"send_subscriptions\" : true
 }">  /root/xray-configuration/setting.json
 ```
 
