@@ -1,4 +1,4 @@
-module sing-box-telegram
+module xray-telegram
 
 go 1.20
 

@@ -6,9 +6,9 @@ import (
 	"log"
 	"math/rand"
 	"os"
-	"sing-box-telegram/entity"
 	"strings"
 	"time"
+	"xray-telegram/entity"
 )
 
 func RemoveRightPart(str, substring string) string {

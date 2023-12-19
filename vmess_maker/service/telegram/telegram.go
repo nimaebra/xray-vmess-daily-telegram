@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"sing-box-telegram/entity"
-	"sing-box-telegram/service/builder"
-	"sing-box-telegram/service/subscribe"
 	"time"
+	"xray-telegram/entity"
+	"xray-telegram/service/builder"
+	"xray-telegram/service/subscribe"
 )
 
 type TelegramClient struct {

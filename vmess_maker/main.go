@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"sing-box-telegram/service/builder"
-	"sing-box-telegram/service/donate"
-	"sing-box-telegram/service/execute"
-	"sing-box-telegram/service/subscribe"
-	"sing-box-telegram/service/telegram"
+	"xray-telegram/service/builder"
+	"xray-telegram/service/donate"
+	"xray-telegram/service/execute"
+	"xray-telegram/service/subscribe"
+	"xray-telegram/service/telegram"
 )
 
 func main() {

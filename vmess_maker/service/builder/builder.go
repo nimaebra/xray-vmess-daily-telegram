@@ -7,9 +7,9 @@ import (
 	"log"
 	"net"
 	"os"
-	"sing-box-telegram/entity"
 	"strconv"
 	"strings"
+	"xray-telegram/entity"
 
 	"github.com/google/uuid"
 )

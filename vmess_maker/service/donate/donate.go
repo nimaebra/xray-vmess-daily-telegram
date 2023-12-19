@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"sing-box-telegram/entity"
-	"sing-box-telegram/service/builder"
-	"sing-box-telegram/service/subscribe"
+	"xray-telegram/entity"
+	"xray-telegram/service/builder"
+	"xray-telegram/service/subscribe"
 )
 
 type Donate struct {

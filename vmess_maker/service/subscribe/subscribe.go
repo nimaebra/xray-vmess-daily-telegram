@@ -3,9 +3,9 @@ package subscribe
 import (
 	"fmt"
 	"math/rand"
-	"sing-box-telegram/service/builder"
-	"sing-box-telegram/service/execute"
 	"strconv"
+	"xray-telegram/service/builder"
+	"xray-telegram/service/execute"
 )
 
 type Subscribe struct {

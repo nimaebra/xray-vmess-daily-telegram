@@ -1,6 +1,6 @@
 package builder
 
-import "sing-box-telegram/entity"
+import "xray-telegram/entity"
 
 type Builder struct {
 	ServerIP         string
