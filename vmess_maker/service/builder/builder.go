@@ -1,6 +1,7 @@
 package builder
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -57,11 +58,6 @@ func (b *Builder) SetSettingsFile() *Builder {
 		return nil
 	}
 
-	if len(setting.Ports) != len(setting.Domains) || len(setting.GRPC) != len(setting.Ports) {
-		fmt.Println("length ports and domain is not equals")
-		return nil
-	}
-
 	b.Setting = setting
 	return b
 
@@ -70,78 +66,62 @@ func (b *Builder) SetSettingsFile() *Builder {
 // SetConfigurations sets the xray configuration
 func (b *Builder) SetConfigurations() *Builder {
 
-	var StringConfigAll string
-	var SliceConfigAll []string
-
-	if len(b.Setting.Domains) == 0 || len(b.Setting.Ports) == 0 || len(b.Setting.GRPC) == 0 {
-		fmt.Println("length ports or domain or grpc is zero")
-		return nil
-	}
-
 	if b.privateKey == "" || b.publicKey == "" {
 		fmt.Println("private key or public key is empty")
 		return nil
 	}
 
-	b.newReality.Inbounds = make([]entity.Inbound, len(b.Setting.Domains))
+	b.newVmess.Inbounds = make([]entity.Inbound, 1)
 
-	shortID := GenerateRandomString(4)
+	var inbound entity.Inbound
+	inbound.Listen = "null"
+	inbound.Port = 443
+	inbound.Protocol = "vmess"
+	inbound.Settings.Clients = make([]entity.Client, 1)
+	inbound.Settings.Clients[0].Email = b.Setting.ChannelName
+	inbound.Settings.Clients[0].ID = uuid.New().String()
 
-	for counter := 0; counter < len(b.Setting.Domains); counter++ {
+	inbound.Sniffing.Enabled = true
+	inbound.Sniffing.DestOverride = []string{"http", "tls", "quic", "fakedns"}
 
-		var inbound entity.Inbound
-		inbound.Listen = "0.0.0.0"
-		inbound.Port = b.Setting.Ports[counter]
-		inbound.Protocol = "vless"
-		inbound.Settings.Clients = make([]entity.Client, 1)
-		inbound.Settings.Clients[0].Flow = ""
-		inbound.Settings.Clients[0].ID = uuid.New().String()
-		inbound.Settings.Decryption = "none"
-		inbound.StreamSettings.Network = "tcp"
-		inbound.StreamSettings.Security = "reality"
-		inbound.StreamSettings.RealitySettings.Show = false
-		inbound.StreamSettings.RealitySettings.Dest = b.Setting.Domains[counter] + ":443"
-		inbound.StreamSettings.RealitySettings.Xver = 0
-		inbound.StreamSettings.RealitySettings.ServerNames = []string{b.Setting.Domains[counter]}
-		inbound.StreamSettings.RealitySettings.PrivateKey = b.privateKey
-		inbound.StreamSettings.RealitySettings.MinClientVer = ""
-		inbound.StreamSettings.RealitySettings.MaxClientVer = ""
-		inbound.StreamSettings.RealitySettings.MaxTimeDiff = 0
-		inbound.StreamSettings.RealitySettings.ShortIds = []string{shortID}
-		inbound.StreamSettings.RealitySettings.SpiderX = "/doggo"
+	inbound.StreamSettings.Network = "tcp"
+	inbound.StreamSettings.Security = "none"
 
-		name := b.Setting.ChannelName + "-" + b.Setting.Domains[counter]
-		//GRPC setting
-		if b.Setting.GRPC[counter] {
-			inbound.StreamSettings.Network = "grpc"
-		}
+	inbound.StreamSettings.Sockopt.AcceptProxyProtocol = false
+	inbound.StreamSettings.Sockopt.Mark = 0
+	inbound.StreamSettings.Sockopt.Tproxy = "off"
+	inbound.StreamSettings.Sockopt.TCPFastOpen = true
 
-		b.newReality.Inbounds[counter] = inbound
+	inbound.StreamSettings.TCPSettings.AcceptProxyProtocol = false
+	inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host = make([]string, 1)
+	inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] = "mashhad1.irancell.ir,shiraz1.irancell.ir,tabriz1.irancell.ir,speedtest1.irancell.ir,ahvaz1.irancell.ir,esfahan1.irancell.ir"
+	inbound.StreamSettings.TCPSettings.Header.Request.Method = "GET"
+	inbound.StreamSettings.TCPSettings.Header.Request.Path = []string{"/speedtest"}
+	inbound.StreamSettings.TCPSettings.Header.Response.Headers.Connection = make([]string, 1)
+	inbound.StreamSettings.TCPSettings.Header.Response.Headers.Connection[0] = "keep-alive"
 
-		//capture setting
-		headerType := ""
-		if inbound.StreamSettings.Network == "tcp" {
-			headerType = "&headerType=none"
-		} else {
-			headerType = ""
-		}
+	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentLength = make([]string, 1)
+	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentLength[0] = "109"
+	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentType = make([]string, 1)
+	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentType[0] = "text/html"
 
-		StringConfig := "vless://" + inbound.Settings.Clients[0].ID + "@" + b.ServerIP + ":" + strconv.Itoa(b.Setting.Ports[counter]) +
-			"?encryption=none&security=reality&sni=" + b.Setting.Domains[counter] +
-			"&fp=chrome&pbk=" + b.publicKey + "&sid=" + inbound.StreamSettings.RealitySettings.ShortIds[0] + "&spx=%2Fdoggo&type=" + inbound.StreamSettings.Network + headerType + "#" + name
+	inbound.StreamSettings.TCPSettings.Header.Response.Reason = "OK"
+	inbound.StreamSettings.TCPSettings.Header.Response.Status = "200"
+	inbound.StreamSettings.TCPSettings.Header.Response.Version = "HTTP/1.1"
 
-		if counter == 0 {
-			b.StringConfigZero = StringConfig
-		}
+	port := strconv.Itoa(inbound.Port)
 
-		StringConfigAll += StringConfig + "\n"
+	inbound.Tag = "inbound-" + port
 
-		SliceConfigAll = append(SliceConfigAll, StringConfig)
+	// name := b.Setting.ChannelName
 
-	}
+	code := "{\"add\":\"" + b.ServerIP + "\",\"aid\":\"0\",\"host\":\"" + inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] + "\",\"id\":\"" + inbound.Settings.Clients[0].ID + "\",\"net\":\"tcp\",\"path\":\"/speedtest\",\"port\":\"" + port + "\",\"ps\":\"" + b.Setting.ChannelName + "\",\"scy\":\"auto\",\"sni\":\"\",\"tls\":\"\",\"type\":\"http\",\"v\":\"2\"}"
 
-	b.StringConfigAll = StringConfigAll
-	b.SliceConfigAll = SliceConfigAll
+	base64code := base64.StdEncoding.EncodeToString([]byte(code))
+
+	StringConfig := "vmess://" + base64code
+
+	b.StringConfigZero = StringConfig
 
 	return b
 
@@ -176,29 +156,31 @@ func (b *Builder) SetPublicKeyAndPrivateKey() *Builder {
 // SetBlock block Iranian and Chinese and porn websites
 func (b *Builder) SetBlock() *Builder {
 
-	b.newReality.Log.Loglevel = "warning"
-	b.newReality.Routing.DomainStrategy = "IPOnDemand"
-	b.newReality.Routing.Rules = make([]entity.Rule, 2)
-	b.newReality.Routing.Rules[0] = entity.Rule{
+	b.newVmess.Log.Loglevel = "warning"
+	b.newVmess.Routing.DomainStrategy = "IPOnDemand"
+	b.newVmess.Routing.Rules = make([]entity.Rule, 2)
+	b.newVmess.Routing.Rules[0] = entity.Rule{
 		Type:        "field",
 		IP:          []string{"geoip:cn", "geoip:ir"},
 		OutboundTag: "block",
 	}
 
-	b.newReality.Routing.Rules[1] = entity.Rule{
+	b.newVmess.Routing.Rules[1] = entity.Rule{
 		Type:        "field",
 		Domain:      []string{"geosite:category-porn"},
 		OutboundTag: "block",
 	}
 
-	b.newReality.Outbounds = make([]entity.Outbound, 2)
-	b.newReality.Outbounds[0] = entity.Outbound{
+	b.newVmess.Outbounds = make([]entity.Outbound, 2)
+	b.newVmess.Outbounds[0] = entity.Outbound{
 		Tag:      "direct",
 		Protocol: "freedom",
+		Settings: struct{}{},
 	}
-	b.newReality.Outbounds[1] = entity.Outbound{
+	b.newVmess.Outbounds[1] = entity.Outbound{
 		Tag:      "block",
 		Protocol: "blackhole",
+		Settings: struct{}{},
 	}
 
 	return b
@@ -207,13 +189,13 @@ func (b *Builder) SetBlock() *Builder {
 
 func (b *Builder) Save() *Builder {
 
-	if b.StringConfigAll == "" || b.StringConfigZero == "" || len(b.SliceConfigAll) == 0 {
-		fmt.Println("string config all or string config zero or slice config all is empty")
+	if b.StringConfigZero == "" {
+		fmt.Println(" string config zero is empty")
 		return nil
 	}
 
 	//save new Reality in file
-	err := WriteFile("./config.json", b.newReality)
+	err := WriteFile("./config.json", b.newVmess)
 	if err != nil {
 		log.Fatal("error during the WriteFile ", err)
 		return nil

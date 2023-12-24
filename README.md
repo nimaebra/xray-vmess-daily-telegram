@@ -41,7 +41,7 @@ if you need modify the setting.json file
 ```
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": 443,
+    \"port\": 443,
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
     \"donate_url\" : \"\",
@@ -101,7 +101,7 @@ Edit this setting file base on your needs.<br />
 ```send_vnstat``` is the boolean value that you want to send ( Bandwidth usage ) vnstat information to the channel. <br />
 ```list_of_subscriptions``` is list of other services that you want to aggregate . if you don't need it leave it without data  ```aggregate_subscriptions : []```
 
-```send_configuration``` is send configuration to the channel. you can choose ```all``` or ```first``` or ```none``` <br />
+```send_configuration``` is send configuration to the channel. you can choose  ```first``` or ```none``` <br />
 ```send_subscriptions``` is send subscription to the channel. you can choose ```true``` or ```false```  <br />
 
 ```
@@ -110,7 +110,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": 443,
+    \"port\": 443,
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
     \"donate_url\" : \"https://where_ever_you_want.site\",
@@ -216,7 +216,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": 8585,
+    \"port\": 8585,
     \"bot_token\" : \"\",
     \"chat_id\" : \"\",
     \"donate_url\" : \"\",
@@ -258,7 +258,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": 443,
+    \"port\": 443,
     \"bot_token\" : \"\",
     \"chat_id\" : \"\",
     \"donate_url\" : \"yebekhe\",
@@ -298,7 +298,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": 443,
+    \"port\": 443,
     \"bot_token\" : \"627344321931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342176532\",
     \"donate_url\" : \"yebekhe\",
@@ -324,7 +324,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": 443,
+    \"port\": 443,
     \"bot_token\" : \"627444321231:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342276432\",
     \"donate_url\" : \"stop\",
@@ -363,7 +363,7 @@ mkdir /root/xray-configuration
 cd /root/xray-configuration
 touch /root/xray-configuration/setting.json
 echo "{
-    \"ports\": 443,
+    \"port\": 443,
     \"bot_token\" : \"627444321231:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342276432\",
     \"donate_url\" : \"\",

@@ -61,13 +61,11 @@ func (c *TelegramClient) callFirst() {
 
 func (c *TelegramClient) callAll() {
 	if c.builder.Setting.SendConfiguration == "all" {
-		for _, currentConfig := range c.builder.SliceConfigAll {
-			err := CallTelegram(currentConfig, c.builder.Setting)
-			if err != nil {
-				fmt.Println("error all call ", err)
-			}
-			time.Sleep(1 * time.Second)
+		err := CallTelegram(c.builder.StringConfigZero, c.builder.Setting)
+		if err != nil {
+			fmt.Println("error all call ", err)
 		}
+		time.Sleep(1 * time.Second)
 	}
 }
 

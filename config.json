@@ -4,48 +4,82 @@
     },
     "inbounds": [
         {
-            "listen": "0.0.0.0",
+            "listen": null,
             "port": 443,
             "protocol": "vmess",
             "settings": {
                 "clients": [
                     {
-                        "id": "5107da70-b827-44d3-9aaa-6390babb2b06",
-                        "security" : "auto"
+                        "email": "Sarina",
+                        "id": "28208267-f427-4a8f-a6de-f641a7f04793"
                     }
                 ]
             },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic",
+                    "fakedns"
+                ],
+                "enabled": true
+            },
             "streamSettings": {
                 "network": "tcp",
+                "security": "none",
+                "sockopt": {
+                    "acceptProxyProtocol": false,
+                    "mark": 0,
+                    "tcpFastOpen": true,
+                    "tproxy": "off"
+                },
                 "tcpSettings": {
+                    "acceptProxyProtocol": false,
                     "header": {
-                        "type": "http",
-                        "response": {
-                            "version": "1.1",
-                            "status": "200",
-                            "reason": "OK",
+                        "request": {
                             "headers": {
-                                "Host": "http://mashhad1.irancell.ir",
+                                "Host": [
+                                    "mashhad1.irancell.ir,shiraz1.irancell.ir,tabriz1.irancell.ir,speedtest1.irancell.ir,ahvaz1.irancell.ir,esfahan1.irancell.ir"
+                                ]
+                            },
+                            "method": "GET",
+                            "path": [
+                                "/speedtest"
+                            ]
+                        },
+                        "response": {
+                            "headers": {
                                 "Connection": [
                                     "Keep-Alive"
                                 ],
-                                "Content-Type" : "text/html"
-                            }
-                        }
+                                "Content-Length": [
+                                    "109"
+                                ],
+                                "Content-Type": [
+                                    "text/html"
+                                ]
+                            },
+                            "reason": "OK",
+                            "status": "200",
+                            "version": "1.1"
+                        },
+                        "type": "http"
                     }
-                },
-                "security": "none"
-            }
+                }
+            },
+            "tag": "inbound-8080"
         }
     ],
     "outbounds": [
         {
+            "tag": "direct",
             "protocol": "freedom",
-            "tag": "direct"
+            "settings": {}
         },
         {
+            "tag": "block",
             "protocol": "blackhole",
-            "tag": "block"
+            "settings": {}
         }
     ],
     "routing": {
@@ -67,5 +101,7 @@
                 "outboundTag": "block"
             }
         ]
-    }
+    },
+    "stats": {},
+    "transport": null
 }

@@ -5,12 +5,10 @@ import "xray-telegram/entity"
 type Builder struct {
 	ServerIP         string
 	Setting          entity.Setting
-	newReality       entity.RealityJson
+	newVmess         entity.VmessJson
 	privateKey       string
 	publicKey        string
 	StringConfigZero string
-	StringConfigAll  string
-	SliceConfigAll   []string
 }
 
 func NewBuilder() *Builder {

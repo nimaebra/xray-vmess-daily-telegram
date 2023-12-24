@@ -37,7 +37,7 @@ func NewSubscribe(builder *builder.Builder,
 
 func (s *Subscribe) setAggregateSubscriptions() {
 
-	AllConfigurations := s.builder.StringConfigAll
+	AllConfigurations := s.builder.StringConfigZero
 
 	for _, link := range s.builder.Setting.AggregateSubscriptions {
 
@@ -74,7 +74,7 @@ func (s *Subscribe) doSubscribe() error {
 		s.SubscriptionNameLink = "subscribe.txt"
 	}
 
-	SaveSubscribe("./"+s.SubscriptionNameLink, s.builder.StringConfigAll)
+	SaveSubscribe("./"+s.SubscriptionNameLink, s.builder.StringConfigZero)
 
 	_, err := s.execute.ExecuteCommand("./make_subscribe.sh")
 	if err != nil {

@@ -1,5 +1,5 @@
 {
-    "ports": 443,
+    "port": 443,
     "bot_token" : "627442321431:bga9g_13IQBuAcDb3DSemBceracA-KDFS3b",
     "chat_id" : "-1003385273232",
     "donate_url" : "",
@@ -7,6 +7,6 @@
     "channel_name" : "Sarina_Esmailzadeh",
     "send_vnstat" : true,
     "aggregate_subscriptions" : [],
-    "send_configuration" : "all",
+    "send_configuration" : "first",
     "send_subscriptions" : true 
  }

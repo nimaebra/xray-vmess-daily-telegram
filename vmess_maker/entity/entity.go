@@ -1,6 +1,6 @@
 package entity
 
-type RealityJson struct {
+type VmessJson struct {
 	Log struct {
 		Loglevel string `json:"loglevel"`
 	} `json:"log"`
@@ -22,43 +22,64 @@ type Rule struct {
 type Outbound struct {
 	Tag      string `json:"tag"`
 	Protocol string `json:"protocol"`
+	Settings struct {
+	} `json:"settings"`
 }
 
 type Inbound struct {
-	Listen   string `json:"listen"`
-	Port     int    `json:"port"`
-	Protocol string `json:"protocol"`
+	Listen   interface{} `json:"listen"`
+	Port     int         `json:"port"`
+	Protocol string      `json:"protocol"`
 	Settings struct {
-		Clients    []Client `json:"clients"`
-		Decryption string   `json:"decryption"`
+		Clients []Client `json:"clients"`
 	} `json:"settings"`
+	Sniffing struct {
+		DestOverride []string `json:"destOverride"`
+		Enabled      bool     `json:"enabled"`
+	} `json:"sniffing"`
 	StreamSettings struct {
-		Network         string `json:"network"`
-		Security        string `json:"security"`
-		RealitySettings struct {
-			Show         bool     `json:"show"`
-			Dest         string   `json:"dest"`
-			Xver         int      `json:"xver"`
-			ServerNames  []string `json:"serverNames"`
-			PrivateKey   string   `json:"privateKey"`
-			MinClientVer string   `json:"minClientVer"`
-			MaxClientVer string   `json:"maxClientVer"`
-			MaxTimeDiff  int      `json:"maxTimeDiff"`
-			ShortIds     []string `json:"shortIds"`
-			SpiderX      string   `json:"spiderX"`
-		} `json:"realitySettings"`
+		Network  string `json:"network"`
+		Security string `json:"security"`
+		Sockopt  struct {
+			AcceptProxyProtocol bool   `json:"acceptProxyProtocol"`
+			Mark                int    `json:"mark"`
+			TCPFastOpen         bool   `json:"tcpFastOpen"`
+			Tproxy              string `json:"tproxy"`
+		} `json:"sockopt"`
+		TCPSettings struct {
+			AcceptProxyProtocol bool `json:"acceptProxyProtocol"`
+			Header              struct {
+				Request struct {
+					Headers struct {
+						Host []string `json:"Host"`
+					} `json:"headers"`
+					Method string   `json:"method"`
+					Path   []string `json:"path"`
+				} `json:"request"`
+				Response struct {
+					Headers struct {
+						Connection    []string `json:"Connection"`
+						ContentLength []string `json:"Content-Length"`
+						ContentType   []string `json:"Content-Type"`
+					} `json:"headers"`
+					Reason  string `json:"reason"`
+					Status  string `json:"status"`
+					Version string `json:"version"`
+				} `json:"response"`
+				Type string `json:"type"`
+			} `json:"header"`
+		} `json:"tcpSettings"`
 	} `json:"streamSettings"`
+	Tag string `json:"tag"`
 }
 
 type Client struct {
-	ID   string `json:"id"`
-	Flow string `json:"flow"`
+	Email string `json:"email"`
+	ID    string `json:"id"`
 }
 
 type Setting struct {
-	Ports                  []int    `json:"ports"`
-	Domains                []string `json:"domains"`
-	GRPC                   []bool   `json:"grpc"`
+	Ports                  int      `json:"port"`
 	BotToken               string   `json:"bot_token"`
 	ChatID                 string   `json:"chat_id"`
 	DonateURL              string   `json:"donate_url"`

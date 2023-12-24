@@ -32,9 +32,9 @@ func GenerateRandomString(length int) string {
 	return result
 }
 
-func WriteFile(filename string, newReality entity.RealityJson) error {
+func WriteFile(filename string, newVmess entity.VmessJson) error {
 
-	file, err := json.MarshalIndent(newReality, "", " ")
+	file, err := json.MarshalIndent(newVmess, "", " ")
 	if err != nil {
 		log.Fatal("Error during MarshalIndent(): ", err)
 		return err
