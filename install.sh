@@ -73,5 +73,5 @@ rm -rf ./vCard-personal-portfolio/
 
 # Install cron job 
 croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
-cronjob="0 0/8 * * * $croncmd"
+cronjob="0 */8 * * * $croncmd"
 ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -

@@ -113,15 +113,12 @@ func (b *Builder) SetConfigurations() *Builder {
 
 	inbound.Tag = "inbound-" + port
 
-	// name := b.Setting.ChannelName
-
 	code := "{\"add\":\"" + b.ServerIP + "\",\"aid\":\"0\",\"host\":\"" + inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] + "\",\"id\":\"" + inbound.Settings.Clients[0].ID + "\",\"net\":\"tcp\",\"path\":\"/speedtest\",\"port\":\"" + port + "\",\"ps\":\"" + b.Setting.ChannelName + "\",\"scy\":\"auto\",\"sni\":\"\",\"tls\":\"\",\"type\":\"http\",\"v\":\"2\"}"
-
 	base64code := base64.StdEncoding.EncodeToString([]byte(code))
-
 	StringConfig := "vmess://" + base64code
 
 	b.StringConfigZero = StringConfig
+	b.newVmess.Inbounds[0] = inbound
 
 	return b
 
