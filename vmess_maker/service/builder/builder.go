@@ -74,8 +74,8 @@ func (b *Builder) SetConfigurations() *Builder {
 	b.newVmess.Inbounds = make([]entity.Inbound, 1)
 
 	var inbound entity.Inbound
-	inbound.Listen = "null"
-	inbound.Port = 443
+	inbound.Listen = nil
+	inbound.Port = b.Setting.Port
 	inbound.Protocol = "vmess"
 	inbound.Settings.Clients = make([]entity.Client, 1)
 	inbound.Settings.Clients[0].Email = b.Setting.ChannelName
@@ -108,6 +108,8 @@ func (b *Builder) SetConfigurations() *Builder {
 	inbound.StreamSettings.TCPSettings.Header.Response.Reason = "OK"
 	inbound.StreamSettings.TCPSettings.Header.Response.Status = "200"
 	inbound.StreamSettings.TCPSettings.Header.Response.Version = "HTTP/1.1"
+
+	inbound.StreamSettings.TCPSettings.Header.Type = "http"
 
 	port := strconv.Itoa(inbound.Port)
 
