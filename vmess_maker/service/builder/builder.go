@@ -94,9 +94,9 @@ func (b *Builder) SetConfigurations() *Builder {
 
 	inbound.StreamSettings.TCPSettings.AcceptProxyProtocol = false
 	inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host = make([]string, 1)
-	inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] = "mashhad1.irancell.ir,shiraz1.irancell.ir,tabriz1.irancell.ir,speedtest1.irancell.ir,ahvaz1.irancell.ir,esfahan1.irancell.ir"
+	inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] = "mashhad1.irancell.ir,shiraz1.irancell.ir,tabriz1.irancell.ir,speedtest1.irancell.ir,ahvaz1.irancell.ir,esfahan1.irancell.ir,server-9889.prod.hosts.ooklaserver.net,server-10076.prod.hosts.ooklaserver.net,server-9795.prod.hosts.ooklaserver.net,server-4317.prod.hosts.ooklaserver.net"
 	inbound.StreamSettings.TCPSettings.Header.Request.Method = "GET"
-	inbound.StreamSettings.TCPSettings.Header.Request.Path = []string{"/speedtest"}
+	inbound.StreamSettings.TCPSettings.Header.Request.Path = []string{"/download", "/upload"}
 	inbound.StreamSettings.TCPSettings.Header.Response.Headers.Connection = make([]string, 1)
 	inbound.StreamSettings.TCPSettings.Header.Response.Headers.Connection[0] = "keep-alive"
 
@@ -107,7 +107,7 @@ func (b *Builder) SetConfigurations() *Builder {
 
 	inbound.StreamSettings.TCPSettings.Header.Response.Reason = "OK"
 	inbound.StreamSettings.TCPSettings.Header.Response.Status = "200"
-	inbound.StreamSettings.TCPSettings.Header.Response.Version = "HTTP/1.1"
+	inbound.StreamSettings.TCPSettings.Header.Response.Version = "1.1"
 
 	inbound.StreamSettings.TCPSettings.Header.Type = "http"
 
