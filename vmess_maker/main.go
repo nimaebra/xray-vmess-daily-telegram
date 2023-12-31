@@ -13,7 +13,7 @@ func main() {
 	executeInstance := execute.NewExecute()
 	executeInstance.ExecuteCommand("./reinstall.sh")
 
-	fmt.Println("read setting file...")
+	fmt.Println("build config ...")
 
 	builderInstance := builder.NewBuilder().
 		SetServerIP().
