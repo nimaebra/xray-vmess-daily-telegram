@@ -50,7 +50,8 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"random_header\" : false
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -103,6 +104,8 @@ Edit this setting file base on your needs.<br />
 
 ```send_configuration``` is send configuration to the channel. you can choose  ```first``` or ```none``` <br />
 ```send_subscriptions``` is send subscription to the channel. you can choose ```true``` or ```false```  <br />
+```random_header``` set random header and response
+<br />
 
 ```
 cd /root
@@ -119,7 +122,8 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"random_header\" : false
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -180,7 +184,8 @@ You have to see below result. <br />
    "send_vnstat" : true,
    "aggregate_subscriptions" : [],
    "send_configuration" : "first",
-   "send_subscriptions" : true
+   "send_subscriptions" : true,
+   "random_header" : false
 }
 
 ```
@@ -225,7 +230,8 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"none\",
-    \"send_subscriptions\" : false
+    \"send_subscriptions\" : false,
+    \"random_header\" : false
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -267,7 +273,8 @@ echo "{
     \"send_vnstat\" : false,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"random_header\" : false
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -307,7 +314,8 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"random_header\" : false
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -333,7 +341,8 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"random_header\" : false
 }">  /root/xray-configuration/setting.json
 ```
 
@@ -372,7 +381,8 @@ echo "{
     \"send_vnstat\" : true,
     \"aggregate_subscriptions\" : [ \"http://1.22.33.444/subscribe.txt\" , \"http://2.22.33.444/subscribe.txt\" , \"http://3.22.33.444/subscribe.txt\"],
     \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true
+    \"send_subscriptions\" : true,
+    \"random_header\" : false
 }">  /root/xray-configuration/setting.json
 ```
 
