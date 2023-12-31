@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"xray-telegram/service/builder"
-	"xray-telegram/service/donate"
 	"xray-telegram/service/execute"
 	"xray-telegram/service/subscribe"
 	"xray-telegram/service/telegram"
@@ -27,8 +26,6 @@ func main() {
 	sub := subscribe.NewSubscribe(builderInstance, executeInstance)
 
 	tel := telegram.NewTelegramClient(builderInstance, sub)
-
-	donate.NewDonate(builderInstance, sub)
 
 	tel.SendVNstat()
 

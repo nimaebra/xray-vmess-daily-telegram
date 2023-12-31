@@ -44,7 +44,6 @@ echo "{
     \"port\": 443,
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
-    \"donate_url\" : \"\",
     \"dynamic_subscription\" : false,
     \"channel_name\" : \"Sarina_Esmailzadeh\",
     \"send_vnstat\" : false,
@@ -96,7 +95,6 @@ Edit this setting file base on your needs.<br />
 ```port``` are the port that you want to use in your server. <br />
 ```bot_token``` is the bot token that you get from the bot father. <br />
 ```chat_id``` is the chat id that you get from the channel. <br />
-```donate_url``` is the url that you want to send your configuration. <br />
 ```dynamic_subscription``` is the boolean value that you want to have dynamic subscribe link like ```subscribe.txt``` or dynamic ones like ```subscribe.122.txt``` <br />
 ```channel_name``` is the channel name that you want to send your configuration. You can choose what ever your want. System didn't check it. <br />
 ```send_vnstat``` is the boolean value that you want to send ( Bandwidth usage ) vnstat information to the channel. <br />
@@ -116,7 +114,6 @@ echo "{
     \"port\": 443,
     \"bot_token\" : \"627434621931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1002343276432\",
-    \"donate_url\" : \"https://where_ever_you_want.site\",
     \"dynamic_subscription\" : true,
     \"channel_name\" : \"Sarina_Esmailzadeh\",
     \"send_vnstat\" : true,
@@ -178,7 +175,6 @@ You have to see below result. <br />
    "ports": 443,
    "bot_token" : "627444321931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b",
    "chat_id" : "-1003342276432",
-   "donate_url" : "",
    "dynamic_subscription" : false,
    "channel_name" : "Sarina_Esmailzadeh",
    "send_vnstat" : true,
@@ -224,7 +220,6 @@ echo "{
     \"port\": 8585,
     \"bot_token\" : \"\",
     \"chat_id\" : \"\",
-    \"donate_url\" : \"\",
     \"dynamic_subscription\" : false,
     \"channel_name\" : \"sarina\",
     \"send_vnstat\" : false,
@@ -248,103 +243,6 @@ after command execution the configuration send to your telegram channel.
 
 
 
-# Donate your server to the Yebekhe
-
-You can buy VPS server and donate your server to the Yebekhe. It means that you can share your configuration with other people,And help to other people to have free internet. Finally, you can help Women,Life,Freedom movement.<br />
-You can also send your automatically to the  yebekhe server or what URL you wants. just fill `donate_url` with your desirable address.<br />
-My sister-in-law project is [Yebekhe](https://github.com/yebekhe/TelegramV2rayCollector)<br />
-
-Don't need to have telegram channel. <br />
-Don't need to have telegram bot.<br />
-
-
-```
-cd /root
-mkdir /root/xray-configuration
-cd /root/xray-configuration
-touch /root/xray-configuration/setting.json
-echo "{
-    \"port\": 443,
-    \"bot_token\" : \"\",
-    \"chat_id\" : \"\",
-    \"donate_url\" : \"yebekhe\",
-    \"dynamic_subscription\" : false,
-    \"channel_name\" : \"sarina\",
-    \"send_vnstat\" : false,
-    \"aggregate_subscriptions\" : [],
-    \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"random_header\" : false
-}">  /root/xray-configuration/setting.json
-```
-
-After install that explain in upper section. you can change scheduler time in the cronjob.
-```
-wget https://raw.githubusercontent.com/majidrezarahnavard/xray-vmess-daily-telegram/main/install.json
-
-```
-
-for edit cronjob use these command:
-```crontab -e```
-
-
-put “At minute 50 past every 2nd hour.” schedule for update the configuration. 
-```28 */2 * * *```
-
-
-
-You can change the cronjob time in the cronjob.sh file. [easy set the time](https://crontab.guru/)
-
-
-# Donate to the YeBeKhe and send to your telegram channel
-
-
-```
-cd /root
-mkdir /root/xray-configuration
-cd /root/xray-configuration
-touch /root/xray-configuration/setting.json
-echo "{
-    \"port\": 443,
-    \"bot_token\" : \"627344321931:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
-    \"chat_id\" : \"-1003342176532\",
-    \"donate_url\" : \"yebekhe\",
-    \"dynamic_subscription\" : false,
-    \"channel_name\" : \"Sarina\",
-    \"send_vnstat\" : true,
-    \"aggregate_subscriptions\" : [],
-    \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"random_header\" : false
-}">  /root/xray-configuration/setting.json
-```
-
-
-
- # Stop sending donates to the Yebekhe server
-
-
- Just write ```stop``` in ```donate_url``` part of the configuration section. And run ```./xray-configuration``` Then remove the ```stop``` form your configuration.
-
- ```
-cd /root
-mkdir /root/xray-configuration
-cd /root/xray-configuration
-touch /root/xray-configuration/setting.json
-echo "{
-    \"port\": 443,
-    \"bot_token\" : \"627444321231:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
-    \"chat_id\" : \"-1003342276432\",
-    \"donate_url\" : \"stop\",
-    \"dynamic_subscription\" : false,
-    \"channel_name\" : \"Sarina\",
-    \"send_vnstat\" : true,
-    \"aggregate_subscriptions\" : [],
-    \"send_configuration\" : \"first\",
-    \"send_subscriptions\" : true,
-    \"random_header\" : false
-}">  /root/xray-configuration/setting.json
-```
 
 
 
@@ -375,7 +273,6 @@ echo "{
     \"port\": 443,
     \"bot_token\" : \"627444321231:bga9g_13IQBuAcDb3DSemBceracA-KDDA3b\",
     \"chat_id\" : \"-1003342276432\",
-    \"donate_url\" : \"\",
     \"dynamic_subscription\" : false,
     \"channel_name\" : \"Sarina\",
     \"send_vnstat\" : true,
@@ -388,8 +285,6 @@ echo "{
 
 
 
-If you want to aggregate subscriptions with serverless system better used below repository.
-[V2Hub](https://github.com/yebekhe/V2Hub)
 
 
 # Diagnosis and check problems
