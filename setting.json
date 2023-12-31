@@ -8,5 +8,7 @@
     "send_vnstat" : true,
     "aggregate_subscriptions" : [],
     "send_configuration" : "first",
-    "send_subscriptions" : true 
+    "send_subscriptions" : true,
+    "random_header" : true
+
  }

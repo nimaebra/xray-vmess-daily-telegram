@@ -6,10 +6,12 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"math/rand"
 	"net"
 	"os"
 	"strconv"
 	"strings"
+	"time"
 	"xray-telegram/entity"
 
 	"github.com/google/uuid"
@@ -63,6 +65,13 @@ func (b *Builder) SetSettingsFile() *Builder {
 
 }
 
+func randomNumber(max int) int {
+	// Set the seed value for the random number generator
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	// Generate a random Int type number between 0 and 9
+	return 0 + r.Intn(max-0)
+}
+
 // SetConfigurations sets the xray configuration
 func (b *Builder) SetConfigurations() *Builder {
 
@@ -71,11 +80,48 @@ func (b *Builder) SetConfigurations() *Builder {
 		return nil
 	}
 
+	//Random  make value
+	hosts := []string{"mashhad1.irancell.ir", "shiraz1.irancell.ir", "tabriz1.irancell.ir", "speedtest1.irancell.ir", "ahvaz1.irancell.ir", "esfahan1.irancell.ir", "server-9889.prod.hosts.ooklaserver.net", "server-10076.prod.hosts.ooklaserver.net", "server-9795.prod.hosts.ooklaserver.net", "server-4317.prod.hosts.ooklaserver.net"}
+	hostSelected1 := hosts[randomNumber(len(hosts))]
+	hostSelected2 := hosts[randomNumber(len(hosts))]
+	hostSelected3 := hosts[randomNumber(len(hosts))]
+	hostSelected4 := hosts[randomNumber(len(hosts))]
+	hostSelected := hostSelected1 + "," + hostSelected2 + "," + hostSelected3 + "," + hostSelected4
+
+	ports := []int{844, 8080, 443, 2087, 8880, 10050, 6443, 2086, 2095, 2082}
+	portSelected := ports[randomNumber(len(ports))]
+
+	methods := []string{"GET", "POST"}
+	methodSelected := methods[randomNumber(len(methods))]
+
+	path := []string{"/upload", "/download"}
+	pathSelected := path[randomNumber(len(path))]
+
+	contextLength := strconv.Itoa(100 + randomNumber(100))
+
+	message := []string{"OK", "Not Found", "Bad Request", "Forbidden", "Internal Server Error", "Service Unavailable"}
+	messageSelected := message[randomNumber(len(message))]
+
+	statuses := []string{"200", "202", "404", "400", "403", "500", "503"}
+	statusSelected := statuses[randomNumber(len(statuses))]
+
+	if !b.Setting.RandomHeader {
+		hostSelected = hosts[0] + "," + hosts[1] + "," + hosts[2] + "," + hosts[3] + "," + hosts[4] + "," + hosts[5] + "," + hosts[6] + "," + hosts[7] + "," + hosts[8] + "," + hosts[9]
+		portSelected = b.Setting.Port
+		methodSelected = "GET"
+		pathSelected = "/download"
+		contextLength = "109"
+		messageSelected = "OK"
+		statusSelected = "200"
+	}
+
+	//Random  make value
+
 	b.newVmess.Inbounds = make([]entity.Inbound, 1)
 
 	var inbound entity.Inbound
 	inbound.Listen = nil
-	inbound.Port = b.Setting.Port
+	inbound.Port = portSelected
 	inbound.Protocol = "vmess"
 	inbound.Settings.Clients = make([]entity.Client, 1)
 	inbound.Settings.Clients[0].Email = b.Setting.ChannelName
@@ -94,19 +140,19 @@ func (b *Builder) SetConfigurations() *Builder {
 
 	inbound.StreamSettings.TCPSettings.AcceptProxyProtocol = false
 	inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host = make([]string, 1)
-	inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] = "mashhad1.irancell.ir,shiraz1.irancell.ir,tabriz1.irancell.ir,speedtest1.irancell.ir,ahvaz1.irancell.ir,esfahan1.irancell.ir,server-9889.prod.hosts.ooklaserver.net,server-10076.prod.hosts.ooklaserver.net,server-9795.prod.hosts.ooklaserver.net,server-4317.prod.hosts.ooklaserver.net"
-	inbound.StreamSettings.TCPSettings.Header.Request.Method = "GET"
-	inbound.StreamSettings.TCPSettings.Header.Request.Path = []string{"/speedtest"}
+	inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] = hostSelected
+	inbound.StreamSettings.TCPSettings.Header.Request.Method = methodSelected
+	inbound.StreamSettings.TCPSettings.Header.Request.Path = []string{pathSelected}
 	inbound.StreamSettings.TCPSettings.Header.Response.Headers.Connection = make([]string, 1)
 	inbound.StreamSettings.TCPSettings.Header.Response.Headers.Connection[0] = "keep-alive"
 
 	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentLength = make([]string, 1)
-	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentLength[0] = "109"
+	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentLength[0] = contextLength
 	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentType = make([]string, 1)
 	inbound.StreamSettings.TCPSettings.Header.Response.Headers.ContentType[0] = "text/html"
 
-	inbound.StreamSettings.TCPSettings.Header.Response.Reason = "OK"
-	inbound.StreamSettings.TCPSettings.Header.Response.Status = "200"
+	inbound.StreamSettings.TCPSettings.Header.Response.Reason = messageSelected
+	inbound.StreamSettings.TCPSettings.Header.Response.Status = statusSelected
 	inbound.StreamSettings.TCPSettings.Header.Response.Version = "1.1"
 
 	inbound.StreamSettings.TCPSettings.Header.Type = "http"
@@ -115,7 +161,7 @@ func (b *Builder) SetConfigurations() *Builder {
 
 	inbound.Tag = "inbound-" + port
 
-	code := "{\"add\":\"" + b.ServerIP + "\",\"aid\":\"0\",\"host\":\"" + inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] + "\",\"id\":\"" + inbound.Settings.Clients[0].ID + "\",\"net\":\"tcp\",\"path\":\"/speedtest\",\"port\":\"" + port + "\",\"ps\":\"" + b.Setting.ChannelName + "\",\"scy\":\"auto\",\"sni\":\"\",\"tls\":\"\",\"type\":\"http\",\"v\":\"2\"}"
+	code := "{\"add\":\"" + b.ServerIP + "\",\"aid\":\"0\",\"host\":\"" + inbound.StreamSettings.TCPSettings.Header.Request.Headers.Host[0] + "\",\"id\":\"" + inbound.Settings.Clients[0].ID + "\",\"net\":\"tcp\",\"path\":\"" + pathSelected + "\",\"port\":\"" + port + "\",\"ps\":\"" + b.Setting.ChannelName + "\",\"scy\":\"auto\",\"sni\":\"\",\"tls\":\"\",\"type\":\"http\",\"v\":\"2\"}"
 	base64code := base64.StdEncoding.EncodeToString([]byte(code))
 	StringConfig := "vmess://" + base64code
 

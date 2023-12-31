@@ -89,4 +89,5 @@ type Setting struct {
 	AggregateSubscriptions []string `json:"aggregate_subscriptions"`
 	SendSubscriptions      bool     `json:"send_subscriptions"`
 	SendConfiguration      string   `json:"send_configuration"`
+	RandomHeader           bool     `json:"random_header"`
 }
