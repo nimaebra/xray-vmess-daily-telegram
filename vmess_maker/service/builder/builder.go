@@ -81,89 +81,15 @@ func (b *Builder) SetConfigurations() *Builder {
 	}
 
 	//Random  make value
-	ports := []int{
-		8080, 8080, 8080, 8080, 8080,
-		844, 16785, 17684, 16904, 8080,
-		443, 2087, 8880, 10050, 6443,
-		2086, 2095, 2082, 10272, 17633,
-		8174, 18995, 10036, 10237, 4342,
-		11025, 5738, 22245, 7667, 9996,
-		9795, 4212, 3462, 12801, 18439,
-		2058, 19215, 22034, 8224, 7970,
-		6722, 19534, 18512, 22097, 18023,
-		9333, 6272, 6280, 6794, 6286,
-	}
-	portSelected := ports[randomNumber(len(ports))]
-
-	hosts := []string{
-		"speedtestapp.mci.ir",
-		"sp1.hiweb.ir",
-		"minispeedtest1.rightel.ir",
-		"speedtest.azmagroup.com",
-		"speedtest.netafrooz.com",
-		"speedtest.rahin.net",
-		"turbo.nakhl.net",
-		"rhaspd2.mci.ir",
-		"sp.z-tel.ir",
-		"speedtest.techno2000.net",
-		"speedtest.fspdns.com",
-		"sp1.bahar.network",
-		"speedtest.serverpars.com",
-		"testspeed.parsonline.com",
-		"speedtest.iranet.ir",
-		"speedtest.bereliannet.net",
-		"speedtest.aionet.ir",
-		"speedtest.asmanfaraz.com",
-		"speed.spadana.net",
-		"esfahan1.irancell.ir",
-		"speedtest1.tce.ir",
-		"speed.atinet.ir",
-		"efmspd2.mci.ir",
-		"speedtest1.chapar.net",
-		"spt1.khalijonline.net",
-		"speedtest.roshangaran.net",
-		"ookla1.ispcrm.net",
-		"speedtest.msrcp.com",
-		"speedtest.hormoznet.net",
-		"speedtest.nimadnet.net",
-		"AHESPD2.mci.ir",
-		"speedtest.respina.net",
-		"st4.ookla.meganetwork.ir",
-		"speedtest.behroozi.ir",
-		"speedtest.sepanta.net",
-		"speed.respina.net",
-		"mashhad1.irancell.ir",
-		"shiraz1.irancell.ir",
-		"tabriz1.irancell.ir",
-		"speedtest1.irancell.ir",
-		"ahvaz1.irancell.ir",
-		"esfahan1.irancell.ir",
-		"server-9889.prod.hosts.ooklaserver.net",
-		"server-10076.prod.hosts.ooklaserver.net",
-		"server-9795.prod.hosts.ooklaserver.net",
-		"server-4317.prod.hosts.ooklaserver.net",
-	}
+	hosts := []string{"mashhad1.irancell.ir", "shiraz1.irancell.ir", "tabriz1.irancell.ir", "speedtest1.irancell.ir", "ahvaz1.irancell.ir", "esfahan1.irancell.ir", "server-9889.prod.hosts.ooklaserver.net", "server-10076.prod.hosts.ooklaserver.net", "server-9795.prod.hosts.ooklaserver.net", "server-4317.prod.hosts.ooklaserver.net"}
 	hostSelected1 := hosts[randomNumber(len(hosts))]
 	hostSelected2 := hosts[randomNumber(len(hosts))]
 	hostSelected3 := hosts[randomNumber(len(hosts))]
 	hostSelected4 := hosts[randomNumber(len(hosts))]
-	hostSelected5 := hosts[randomNumber(len(hosts))]
-	hostSelected6 := hosts[randomNumber(len(hosts))]
-	hostSelected7 := hosts[randomNumber(len(hosts))]
-	hostSelected8 := hosts[randomNumber(len(hosts))]
-	hostSelected9 := hosts[randomNumber(len(hosts))]
-	hostSelected10 := hosts[randomNumber(len(hosts))]
+	hostSelected := hostSelected1 + "," + hostSelected2 + "," + hostSelected3 + "," + hostSelected4
 
-	hostSelected := hostSelected1 + "," +
-		hostSelected2 + "," +
-		hostSelected3 + "," +
-		hostSelected4 + "," +
-		hostSelected5 + "," +
-		hostSelected6 + "," +
-		hostSelected7 + "," +
-		hostSelected8 + "," +
-		hostSelected9 + "," +
-		hostSelected10
+	ports := []int{844, 8080, 8080, 8080, 443, 2087, 8880, 10050, 6443, 2086, 2095, 2082}
+	portSelected := ports[randomNumber(len(ports))]
 
 	methods := []string{"GET", "POST"}
 	methodSelected := methods[randomNumber(len(methods))]
