@@ -494,3 +494,13 @@ base64 decode :
 {"add":"45.156.24.224","aid":"0","host":"mashhad1.irancell.ir","id":"5107da70-b827-44d3-9aaa-6390babb2b06","net":"tcp","path":"/","port":"443","ps":"sarina","scy":"auto","sni":"","tls":"","type":"http","v":"2"}
 
 ```
+
+# cron tab file example
+
+
+```
+30 8 * * * cd /root/xray-configuration && /root/xray-configuration/xray-telegram > /root/xray-configuration/cronjob.log 2>&1
+0 5 * * * cd /root/xray-configuration && /root/xray-configuration/xray-telegram > /root/xray-configuration/cronjob.log 2>&1
+30 16 * * * cd /root/xray-configuration && /root/xray-configuration/xray-telegram > /root/xray-configuration/cronjob.log 2>&1
+30 20 * * * cd /root/xray-configuration && /root/xray-configuration/xray-telegram > /root/xray-configuration/cronjob.log 2>&1
+```
