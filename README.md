@@ -7,6 +7,9 @@ Ubuntu 22.04
 
 # easy way install
 
+Persian Document [README_FA.md](https://github.com/majidrezarahnavard/xray-vmess-daily-telegram/blob/main/README_FA.md)
+
+
 
 for more detail please read other parts.
 
