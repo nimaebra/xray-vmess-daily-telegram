@@ -436,7 +436,8 @@ see the cronjob list
 
 result:
 
-```30 11 * * * cd /root/xray-configuration && /root/xray-configuration/xray-telegram > /root/xray-configuration/cronjob.log 2>&1
+```
+30 11 * * * cd /root/xray-configuration && /root/xray-configuration/xray-telegram > /root/xray-configuration/cronjob.log 2>&1
 ```
 
 
