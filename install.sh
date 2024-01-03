@@ -77,20 +77,25 @@ cp -ar ./vCard-personal-portfolio/*  /var/www/html/
 rm -rf ./vCard-personal-portfolio/
 
 
+Install cron job 
+croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
+cronjob="30 3 * * * $croncmd"
+( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
+
 # Install cron job 
-croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
-cronjob="30 8 * * * $croncmd"
-( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
+# croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
+# cronjob="30 8 * * * $croncmd"
+# ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 
-croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
-cronjob="0 5 * * * $croncmd"
-( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
+# croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
+# cronjob="0 5 * * * $croncmd"
+# ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 
-croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
-cronjob="30 16 * * * $croncmd"
-( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
+# croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
+# cronjob="30 16 * * * $croncmd"
+# ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 
-croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
-cronjob="30 20 * * * $croncmd"
-( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
+# croncmd="cd $install_dir && $install_dir/xray-telegram > $install_dir/cronjob.log 2>&1"
+# cronjob="30 20 * * * $croncmd"
+# ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 
