@@ -473,6 +473,15 @@ for build go file use below command line:
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o xray-telegram
 ```
 
+<br />
+if you got below error it means that the architecture of your server is not amd64. 
+
+```
+cannot execute binary file exec format error 
+```
+
+It was said: Usually that error message means Linux doesn't recognize the file as a shell script or as an executable file. Typically the cause is running an executable on the wrong architecture - if you try to run x86 executables on an ARM CPU, this message comes up.
+
 
 # Base64 String
 ```
