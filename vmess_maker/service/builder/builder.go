@@ -10,7 +10,6 @@ import (
 	"net"
 	"os"
 	"strconv"
-	"strings"
 	"time"
 	"xray-telegram/entity"
 
@@ -74,11 +73,6 @@ func randomNumber(max int) int {
 
 // SetConfigurations sets the xray configuration
 func (b *Builder) SetConfigurations() *Builder {
-
-	if b.privateKey == "" || b.publicKey == "" {
-		fmt.Println("private key or public key is empty")
-		return nil
-	}
 
 	//Random  make value
 	hosts := []string{"mashhad1.irancell.ir", "shiraz1.irancell.ir", "tabriz1.irancell.ir", "speedtest1.irancell.ir", "ahvaz1.irancell.ir", "esfahan1.irancell.ir", "server-9889.prod.hosts.ooklaserver.net", "server-10076.prod.hosts.ooklaserver.net", "server-9795.prod.hosts.ooklaserver.net", "server-4317.prod.hosts.ooklaserver.net"}
@@ -166,32 +160,6 @@ func (b *Builder) SetConfigurations() *Builder {
 
 	b.StringConfigZero = StringConfig
 	b.newVmess.Inbounds[0] = inbound
-
-	return b
-
-}
-
-// SetPublicKeyAndPrivateKey read public and private key from key pair
-func (b *Builder) SetPublicKeyAndPrivateKey() *Builder {
-
-	dat, err := os.ReadFile("./key_pair.txt")
-	if err != nil {
-		fmt.Println("error during the key pair")
-		return nil
-	}
-	allData := string(dat)
-
-	allData = strings.TrimSpace(allData)
-	allData = strings.ReplaceAll(allData, " ", "")
-
-	privateKeyFirst := RemoveRightPart(allData, "Publickey:")
-	privateKey := RemoveLeftPart(privateKeyFirst, "Privatekey:")
-
-	pubAns := strings.SplitAfter(allData, "Publickey:")
-	publicKey := pubAns[1]
-
-	b.privateKey = privateKey
-	b.publicKey = publicKey
 
 	return b
 

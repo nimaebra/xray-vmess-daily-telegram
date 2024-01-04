@@ -6,8 +6,6 @@ type Builder struct {
 	ServerIP         string
 	Setting          entity.Setting
 	newVmess         entity.VmessJson
-	privateKey       string
-	publicKey        string
 	StringConfigZero string
 }
 

@@ -18,7 +18,6 @@ func main() {
 	builderInstance := builder.NewBuilder().
 		SetServerIP().
 		SetSettingsFile().
-		SetPublicKeyAndPrivateKey().
 		SetConfigurations().
 		SetBlock().
 		Save()
