@@ -33,6 +33,12 @@ systemctl restart sshd
 service ssh restart
 ```
 
+```
+cd /root
+mkdir /root/xray-configuration
+cd /root/xray-configuration
+```
+
 حالا باید اسکریپت را نصب کنید
 
 ```
